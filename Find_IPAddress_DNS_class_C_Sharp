@@ -1,0 +1,24 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Net;
+
+namespace ConsoleApplication7
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string hostName = Dns.GetHostName();
+            Console.WriteLine("Local hostname: {0}",hostName); //Print out your Computer Name
+            //If you use Dns.GetHostByName(string) below, you can't show the IPv6 in output screen.
+            IPHostEntry myself = Dns.GetHostEntry(hostName); 
+            foreach (IPAddress address in myself.AddressList)
+                Console.WriteLine("IP Address: {0}",address.ToString());
+            Console.ReadLine();
+        }
+        
+    }
+}
